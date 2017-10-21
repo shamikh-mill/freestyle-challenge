@@ -37,35 +37,29 @@ class Party:
 				people_dict[peoplelist[i]] = people_dict[peoplelist[i]][0] + peoplelist[i + 1].split(','), people_dict[peoplelist[i]][1] + peoplelist[i + 2].split(',')
 		return people_dict 
 
-	def read_drink_prices(self):
-		with open(self.drinks) as d: # names not unique -> make into set 
-			drinkprices = d.readlines()
-		drinkprices = [x.strip().split(':') for x in drinkprices]
-		drinkprices = [x for x in drinkprices if len(x) > 1] # remove space characters 
+	def read_prices(self, type):
+		if type == 'food': 
+			with open(self.food) as f: # names not unique -> make into set 
+				prices = f.readlines()
+		if type == 'drinks': 
+			with open(self.drinks) as f: # names not unique -> make into set 
+				prices = f.readlines()
+				
+		prices = [x.strip().split(':') for x in prices]
+		prices = [x for x in prices if len(x) > 1] # remove space characters 
 
-		drink_prices_dict = {}
-		for drink in drinkprices: 
-			drink_prices_dict[drink[0]] = float(drink[1]) 
-		return drink_prices_dict
-
-	def read_food_prices(self):
-		with open(self.food) as f: # names not unique -> make into set 
-				foodprices = f.readlines()
-		foodprices = [x.strip().split(':') for x in foodprices]
-		foodprices = [x for x in foodprices if len(x) > 1] # remove space characters 
-
-		food_prices_dict = {}
-		for food in foodprices: 
-			food_prices_dict[food[0]] = float(food[1]) 
-		return food_prices_dict
+		dict = {}
+		for x in prices: 
+			dict[x[0]] = float(x[1]) 
+		return dict 
 
 
 
 if __name__ == '__main__':
 	my_party = Party(args['budget'], 'people.txt', 'drinks.txt', 'food.txt')
 	people_info = my_party.read_people_info()
-	drink_info = my_party.read_drink_prices()
-	food_info = my_party.read_food_prices()
+	drink_info = my_party.read_prices('drinks')
+	food_info = my_party.read_prices('food')
 
 
 	print ('Information about people:', people_info )
