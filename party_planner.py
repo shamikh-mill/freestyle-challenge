@@ -1,4 +1,6 @@
 import argparse
+from operator import itemgetter
+
 
 ap = argparse.ArgumentParser(description='Calculate optimal foods and drinks to buy with given budget.')
 
@@ -51,17 +53,42 @@ class Party:
 		dict = {}
 		for x in prices: 
 			dict[x[0]] = float(x[1]) 
-		return dict 
+
+		return sorted(dict.items(), key=itemgetter(1), reverse = True) # sorted from highest to lowest 
+
+	def plan(self, people, food, drinks):
+		num_people = len(people.keys())
+		share_per_person = self.budget/num_people 
+		print ('Each person is allocated', share_per_person, 'to spend on their preferred foods.')
+
+		plan = {}
+		for person in people: 
+			
+
+
+		return 
+
 
 
 
 if __name__ == '__main__':
-	my_party = Party(args['budget'], 'people.txt', 'drinks.txt', 'food.txt')
+	my_party = Party(args['budget'], 'people.txt', 'drinks.txt', 'food.txt') #initialize with filenames in current directory, budget is input from terminal as argument 
 	people_info = my_party.read_people_info()
 	drink_info = my_party.read_prices('drinks')
 	food_info = my_party.read_prices('food')
 
-
-	print ('Information about people:', people_info )
+	print ('Budget:', my_party.budget)
+	print ('Info about people:', people_info )
 	print ('Prices of drinks:', drink_info)
 	print ('Prices of foods:', food_info)
+
+	my_party.plan(people_info, drink_info, food_info) 
+
+
+	# divide budget by the number of people to see how much should be spend on each person, and assume that the more expensive things make people the most happy 
+	# allocate budget/n for each of the n people 
+	# buy favorite drink, favorite food together to avoid a trivial solution in which we just buy as much of the most expensive thing as we can 
+	# once that's no longer affordable, buy lower priced items. For diversity, more than half of the food cannot be used for the same combination 
+
+
+
