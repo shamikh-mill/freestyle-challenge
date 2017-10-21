@@ -1,0 +1,9 @@
+pizza:2.50
+pasta:3.00
+lasagna:2.75
+french fries:1.50
+taco:1.00
+baked potato:1.50
+hamburger:3.00
+hot dog:1.50
+tomato:.75

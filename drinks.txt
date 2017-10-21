@@ -1,0 +1,8 @@
+orange juice:1.25
+apple juice:1.50
+fruit punch:1.75
+pomegranate juice:2.00
+lemonade:.50
+milkshakes:2.50
+chocolate milk:1.75
+soymilk:3.00

@@ -1,0 +1,12 @@
+John Smith
+orange juice,apple juice,fruit punch,pomegranate juice,lemonade
+pizza,pasta,lasagna,french fries,tacos,baked potatoes
+Elliot Ro
+fruit punch,pomegranate juice,lemonade
+pizza,pasta,lasagna,french fries
+Samantha Tarl
+milkshakes,chocolate milk,soymilk
+hamburgers,hot dogs,tomatoes,tacos
+John Smith
+chocolate milk,soymilk
+hot dogs,tomatoes
