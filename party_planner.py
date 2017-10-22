@@ -56,17 +56,26 @@ class Party:
 
 		return sorted(dict.items(), key=itemgetter(1), reverse = True) # sorted from highest to lowest 
 
-	def plan(self, people, food, drinks):
-		num_people = len(people.keys())
+	def plan(self, people_dict, drinks_list, food_list):
+		num_people = len(people_dict.keys())
 		share_per_person = self.budget/num_people 
 		print ('Each person is allocated', share_per_person, 'to spend on their preferred foods.')
+		people_list = [k for k,v in people_dict.items()]
 
-		plan = {}
-		for person in people: 
-			
+		food_plan = {}
+		drink_plan = {}
+		for person in people_list: 
+			s = share_per_person
+			while s >= 0: 
+				for drink_tuple in drinks_list: 
+					if drink_tuple[0] in people_dict[person][0]: # if the first most expensive drink is in the list of preferred foods 
+						num_bought = (share_per_person/2)//drink_tuple[1]
+						if drink_tuple[0] not in drink_plan: 	
+							drink_plan[drink_tuple[0]] = 0
+						drink_plan[drink_tuple[0]] += num_bought
+						s = s - num_bought*drink_tuple[1]
 
-
-		return 
+		return drink_plan
 
 
 
@@ -82,7 +91,9 @@ if __name__ == '__main__':
 	print ('Prices of drinks:', drink_info)
 	print ('Prices of foods:', food_info)
 
-	my_party.plan(people_info, drink_info, food_info) 
+	plan = my_party.plan(people_info, drink_info, food_info) 
+	print (plan)
+
 
 
 	# divide budget by the number of people to see how much should be spend on each person, and assume that the more expensive things make people the most happy 
