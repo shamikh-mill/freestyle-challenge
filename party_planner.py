@@ -58,26 +58,42 @@ class Party:
 
 	def plan(self, people_dict, drinks_list, food_list):
 		num_people = len(people_dict.keys())
-		share_per_person = self.budget/num_people 
+		share_per_person = self.budget/num_people # number of people in the party 
 		print ('Each person is allocated', share_per_person, 'to spend on their preferred foods.')
 		people_list = [k for k,v in people_dict.items()]
 
-		food_plan = {}
+		drink_min = min([x[1] for x in drinks_list]) 
+		food_min = min([x[1] for x in food_list])
+
 		drink_plan = {}
 		for person in people_list: 
-			s = share_per_person
-			while s >= 0: 
+			#print (min(drinks_list)) 
+			d = share_per_person/2
+			while d > drink_min: 
 				for drink_tuple in drinks_list: 
 					if drink_tuple[0] in people_dict[person][0]: # if the first most expensive drink is in the list of preferred foods 
-						num_bought = (share_per_person/2)//drink_tuple[1]
-						if drink_tuple[0] not in drink_plan: 	
-							drink_plan[drink_tuple[0]] = 0
-						drink_plan[drink_tuple[0]] += num_bought
-						s = s - num_bought*drink_tuple[1]
+						num_bought = d//drink_tuple[1]
+						if num_bought > 0.0: 
+							if drink_tuple[0] not in drink_plan: 	
+								drink_plan[drink_tuple[0]] = 0
+							drink_plan[drink_tuple[0]] += num_bought
+							d = d - num_bought*drink_tuple[1]
 
-		return drink_plan
+		food_plan = {}
+		for person in people_list: 
+			d = share_per_person/2
+			while d > food_min:
+				for food_tuple in food_list:
+					if food_tuple[0] in people_dict[person][1]:
+						num_bought = d//food_tuple[1] # integer division 
+						if num_bought > 0.0: 
+							if food_tuple[0] not in food_plan: 	
 
+								food_plan[food_tuple[0]] = 0
+							food_plan[food_tuple[0]] += num_bought
+							d = d - num_bought*food_tuple[1]
 
+		return food_plan, drink_plan
 
 
 if __name__ == '__main__':
@@ -92,10 +108,8 @@ if __name__ == '__main__':
 	print ('Prices of foods:', food_info)
 
 	plan = my_party.plan(people_info, drink_info, food_info) 
-	print (plan)
-
-
-
+	print ('Food Plan:', plan[0], '\nDrink Plan:', plan[1]) 
+	
 	# divide budget by the number of people to see how much should be spend on each person, and assume that the more expensive things make people the most happy 
 	# allocate budget/n for each of the n people 
 	# buy favorite drink, favorite food together to avoid a trivial solution in which we just buy as much of the most expensive thing as we can 
