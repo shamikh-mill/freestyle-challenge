@@ -38,39 +38,39 @@ Here's an example test case I used:
 
 people.txt 
 
-John Smith
-orange juice,apple juice,fruit punch,pomegranate juice,lemonade
-pizza,pasta,lasagna,french fries,tacos,baked potatoes
-Elliot Ro
-fruit punch,lemonade
-pizza,pasta,lasagna,french fries
-Samantha Tarl
-milkshakes,chocolate milk,soymilk
-hamburgers,hot dogs,tomatoes,tacos
-John Smith
-chocolate milk,soymilk
-hot dogs,tomatoes
+John Smith  
+orange juice,apple juice,fruit punch,pomegranate juice,lemonade  
+pizza,pasta,lasagna,french fries,tacos,baked potatoes  
+Elliot Ro  
+fruit punch,lemonade  
+pizza,pasta,lasagna,french fries  
+Samantha Tarl  
+milkshakes,chocolate milk,soymilk  
+hamburgers,hot dogs,tomatoes,tacos  
+John Smith  
+chocolate milk,soymilk  
+hot dogs,tomatoes  
 
 
-food.txt 
+food.txt  
+ 
+pizza:2.50  
+pasta:3.00  
+lasagna:2.75  
+french fries:1.50  
+taco:1.00  
+baked potato:1.50  
+hamburger:3.00  
+hot dog:1.50  
+tomato:.75   
 
-pizza:2.50
-pasta:3.00
-lasagna:2.75
-french fries:1.50
-taco:1.00
-baked potato:1.50
-hamburger:3.00
-hot dog:1.50
-tomato:.75
+drinks.txt   
 
-drinks.txt 
-
-orange juice:1.25
-apple juice:1.50
-fruit punch:1.75
-pomegranate juice:2.00
-lemonade:.50
-milkshakes:2.50
-chocolate milk:1.75
-soymilk:3.00
+orange juice:1.25  
+apple juice:1.50  
+fruit punch:1.75  
+pomegranate juice:2.00  
+lemonade:.50  
+milkshakes:2.50  
+chocolate milk:1.75  
+soymilk:3.00  
