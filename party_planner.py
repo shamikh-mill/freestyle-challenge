@@ -64,7 +64,6 @@ class Party:
 
 		drink_min = min([x[1] for x in drinks_list]) 
 		food_min = min([x[1] for x in food_list])
-		print (drink_min)
 
 
 		drink_plan = {}
@@ -76,32 +75,24 @@ class Party:
 					if drink_tuple[0] in people_dict[person][0]: # if the first most expensive drink is in the list of preferred foods 
 						num_bought = d//drink_tuple[1]
 						if num_bought > 0.0: 
-							print ('Buying', num_bought, drink_tuple[0])							 
 							if drink_tuple[0] not in drink_plan: 	
 								drink_plan[drink_tuple[0]] = 0
 							drink_plan[drink_tuple[0]] += num_bought
 							d = d - num_bought*drink_tuple[1]
-				print(d)
-		print (drink_plan)
 
 		food_plan = {}
 		for person in people_list: 
-			print ('person', person)
-#			print (min(food_list)) 
 			d = share_per_person//2
 			while d > food_min:
 				for food_tuple in food_list:
 					if food_tuple[0] in people_dict[person][1]:
 						num_bought = d//food_tuple[1] # integer division 
 						if num_bought > 0.0: 
-							print ('rip')
-							print ('Buying', num_bought, food_tuple[0])
 							if food_tuple[0] not in food_plan: 	
 
 								food_plan[food_tuple[0]] = 0
 							food_plan[food_tuple[0]] += num_bought
 							d = d - num_bought*food_tuple[1]
-				print (d)
 
 		return food_plan, drink_plan
 
