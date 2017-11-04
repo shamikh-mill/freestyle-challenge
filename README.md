@@ -1,4 +1,4 @@
-# FreeStyle Fellows Engineering Challenge: Party Planner 
+# Freestyle Fellows Engineering Challenge: Party Planner 
 
 Link to GitHub: https://github.com/shamikh-mill/freestyle-challenge
 
