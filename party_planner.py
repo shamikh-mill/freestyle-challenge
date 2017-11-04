@@ -103,10 +103,10 @@ if __name__ == '__main__':
 	drink_info = my_party.read_prices('drinks')
 	food_info = my_party.read_prices('food')
 
-	print ('Budget:', my_party.budget)
-	print ('Info about people:', people_info )
-	print ('Prices of drinks:', drink_info)
-	print ('Prices of foods:', food_info)
+	#print ('Budget:', my_party.budget)
+	#print ('Info about people:', people_info )
+	#print ('Prices of drinks:', drink_info)
+	#print ('Prices of foods:', food_info)
 
 	plan = my_party.plan(people_info, drink_info, food_info) 
 	print ('Food Plan:', plan[0], '\nDrink Plan:', plan[1]) 
